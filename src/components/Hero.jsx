@@ -1,5 +1,5 @@
 import HeroBg from '../assets/heroBg.svg';
-import {Button} from '../components/Button';
+// import {Button} from '../components/Button';
 import {motion} from 'framer-motion';
 
 export const Hero=()=>{
@@ -18,7 +18,7 @@ export const Hero=()=>{
         <p className="centerText">
             Front-<span>End</span><br />Web Developer
         </p>
-        <Button className='projectBtn'>Projects</Button>
+        <a href='#projects' className='projectBtn'>Projects</a>
 
                 </div>
                 <div className="heroImg">

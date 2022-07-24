@@ -1,4 +1,4 @@
-import { Button } from "./Button";
+// import { Button } from "./Button";
 import { Card } from "./Card";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -14,16 +14,7 @@ export const Projects = () => {
     client.fetch(query).then((data) => setProjects(data));
   }, []);
 
-  const handleFilter = (query) => {
-   setProjects(projects.filter(item=>{
-    if(item.category.toLowerCase()===query.toLowerCase()){
-      
-     return item
-    }else{
-      return item
-    }
-   }))
-  };
+  
 
   return (
     <div  className="projects">
@@ -33,7 +24,7 @@ export const Projects = () => {
           <p>
             here are some of my <span>projects</span>
           </p>
-          <div className="buttonContainer">
+          {/* <div className="buttonContainer">
             {["All", "Web App", "Clone", "Vanilla Js"].map((item, index) => (
               <Button
                 key={index}
@@ -43,7 +34,7 @@ export const Projects = () => {
                 {item}
               </Button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <motion.div
