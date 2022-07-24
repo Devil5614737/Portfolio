@@ -1,0 +1,120 @@
+@import 'global';
+@import 'variables';
+@import 'navbar';
+@import 'projectSection';
+@import 'skillSection';
+@import 'about';
+@import 'contact';
+
+// media queries
+@mixin mobile(){
+    @media screen and (max-width:600px) {
+        grid-template-columns: 1fr;
+        place-items: center;
+        text-align: center;
+    margin-top: 122px;
+        .projectBtn{
+            margin: auto;
+        }
+        .heroImg{
+            margin-top: 16px;
+            display: none;
+        }
+        img{
+            height: 80%;
+        }
+       
+    }
+    @media screen and (max-width:856px) {
+        grid-template-columns: 1fr;
+        place-items: center;
+        text-align: center;
+        row-gap: 42px;
+        .projectBtn{
+            margin: auto;
+        }
+        .heroImg{
+            margin-top: 16px;
+            // display: none;
+            width: 60%;
+        }
+        img{
+            height: 80%;
+        }
+       
+    }
+}
+
+
+.header{
+    width: 100vw;
+    height: 100vh;
+    .heroSection{
+        max-width: 1200px;
+        margin: auto;
+        .wrapper{
+            margin-top: 52px;
+            padding: 1em 9%;
+            display: grid;
+            grid-template-columns:repeat(2,1fr);
+           @include mobile();
+            .heroText{
+                margin-top: 12px;
+                .topTitle{
+                    font-size: 1.6em;
+                    @media screen and (max-width:600px){
+                        font-size: 1.3em;
+                     
+                 }
+                }
+                .centerText{
+                    font-weight: bold;
+                    font-size: 4.5em;
+                    line-height: 1.3;
+                    @media screen and (max-width:600px){
+                            font-weight: bold;
+                            font-size: 3.2em;
+                            line-height: 1.3;
+                        
+                    }
+                 span{
+                    color: $blue;
+                 }   
+                }
+                .projectBtn{
+                    margin-top: 8px;
+                    font-size: 1.5em;
+                    font-weight: medium;
+                    background-color: $blue;
+                    color: white;
+                    border:none;
+                    border-radius: 5px;
+                    padding: .5em 1.4em;
+                    cursor: pointer;
+                    @media screen and (max-width:600px){
+                       font-size: 1.3em;
+                    
+                }
+                }
+            }
+            .heroImg{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+main{
+    .projectSection{
+        padding: 2em 0;
+        background-color: $light-grey;
+    }
+    .aboutSection{
+       margin-top: 99px;
+    }
+    .contactSection{
+       margin-top: 59px;
+    }
+}
