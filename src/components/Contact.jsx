@@ -49,7 +49,7 @@ export const Contact = () => {
         </div>
         <div className="links">
           <Skill color="#C3ECFF" className="box">
-            <a href="#!">
+            <a href="https://www.linkedin.com/in/kaushik-sheel-691882157/" target='_blank' rel="noreferrer">
               <img src={LinkedIn} alt="icon" />
             </a>
           </Skill>
