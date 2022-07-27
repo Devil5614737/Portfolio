@@ -6,25 +6,35 @@ import { client } from "../client";
 
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
-  // const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [filterWork, setFilterWork] = useState([]);
+    const [activeFilter, setActiveFilter] = useState('All');
+  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   useEffect(() => {
     const query = '*[_type=="projects"]';
 
-    client.fetch(query).then((data) => setProjects(data));
+    client.fetch(query).then((data) => {setProjects(data)
+    setFilterWork(data)
+    });
   }, []);
 
 
   const handleFilter=(item)=>{
-   
-    setProjects(projects.filter(project=>{
-      if(project.category.toLowerCase()===item.toLowerCase()){
-        return project
-      }
-    }));
-    
-  }
+   setActiveFilter(item);
+   setAnimateCard([{ y: 100, opacity: 0 }]);
 
+   setTimeout(()=>{
+    setAnimateCard([{ y: 0, opacity: 1 }]);
+
+    if (item === 'All') {
+      setFilterWork(projects);
+    } else {
+      setFilterWork(projects.filter((work) => work.category===item));
+    }
+
+   },500)
+  
+  }
 
 
   return (
@@ -54,10 +64,12 @@ export const Projects = () => {
             y: [100, 0],
             opacity: [0, 1],
           }}
-          transition={{ duration: 0.5, type: "spring" }}
+          // transition={{ duration: 0.5, type: "spring" }}
           className="cardContainer"
+          animate={animateCard}
+        transition={{ duration: 0.5, delayChildren: 0.5 }}
         >
-          {projects.map((project) => (
+          {filterWork.map((project) => (
             <Card
               key={project._id}
               demo={project.demoLink}

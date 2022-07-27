@@ -1,4 +1,5 @@
 .container{
+   
     .title{
         display: grid;
         place-items: center;
@@ -8,12 +9,15 @@
         }
     }
     .wrapper{
+      
         background-color: $blue;
         color: white;
         border-radius: 25px;
         padding: 8em 9%;
+        
         margin-top: 32px;
         .content{
+          
             display: grid;
             grid-template-columns: 1fr 3fr;
             grid-column-gap: 22px;

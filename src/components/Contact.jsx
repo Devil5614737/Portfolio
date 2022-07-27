@@ -59,7 +59,7 @@ export const Contact = () => {
           </Skill>
         </div>
 
-        <form ref={form} className="form">
+        <form onSubmit={sendEmail} ref={form} className="form">
           <div className="input">
             <label htmlFor="name">Name</label>
             <input type="text" id="name" name="name" required />
@@ -73,7 +73,8 @@ export const Contact = () => {
             <textarea id="message" name="message" required />
           </div>
           <div className="input">
-            <Button onClick={sendEmail}>
+          
+            <Button >
               <img src={Send} alt="icon" />
               submit
             </Button>
