@@ -46,7 +46,7 @@ export const Projects = () => {
             here are some of my <span>projects</span>
           </p>
           <div className="buttonContainer">
-            {["All", "Web App", "Clone", "Vanilla Js"].map((item, index) => (
+            {["All", "Web App", "Clone", "Vanilla Js","Native Apps].map((item, index) => (
               <Button
                 key={index}
                 onClick={() => handleFilter(item)}
