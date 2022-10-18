@@ -7,38 +7,66 @@ import { client } from "../client";
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
-    const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState("All");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [categories, setCategories] = useState([
+    {
+      id: 1,
+      title: "All",
+      active:true
+    },
+    {
+      id: 2,
+      title: "Web App",
+    },
+    {
+      id: 3,
+      title: "Clone",
+    },
+    {
+      id: 4,
+      title: "Vanilla Js",
+    },
+    {
+      id: 5,
+      title: "Native Apps",
+    },
+  ]);
 
   useEffect(() => {
     const query = '*[_type=="projects"]';
 
-    client.fetch(query).then((data) => {setProjects(data)
-    setFilterWork(data)
+    client.fetch(query).then((data) => {
+      setProjects(data);
+      setFilterWork(data);
     });
   }, []);
 
+  const handleFilter = (item) => {
+    setCategories(
+      categories.map((category) =>
+        category.id === item.id
+          ? { ...category, active: true }
+          : { ...category, active: false }
+      )
+    );
+    setActiveFilter(item);
+    setAnimateCard([{ y: 100, opacity: 0 }]);
 
-  const handleFilter=(item)=>{
-   setActiveFilter(item);
-   setAnimateCard([{ y: 100, opacity: 0 }]);
+   
+      setAnimateCard([{ y: 0, opacity: 1 }]);
 
-   setTimeout(()=>{
-    setAnimateCard([{ y: 0, opacity: 1 }]);
-
-    if (item === 'All') {
-      setFilterWork(projects);
-    } else {
-      setFilterWork(projects.filter((work) => work.category===item));
-    }
-
-   },500)
+      if (item.title === "All") {
+        setFilterWork(projects);
+      } else {
+        setFilterWork(projects.filter((work) => work.category === item.title));
+      }
   
-  }
+  };
 
 
   return (
-    <div  className="projects">
+    <div className="projects">
       <div className="wrapper">
         <div className="titleContainer">
           <p>Projects</p>
@@ -46,13 +74,17 @@ export const Projects = () => {
             here are some of my <span>projects</span>
           </p>
           <div className="buttonContainer">
-            {["All", "Web App", "Clone", "Vanilla Js","Native Apps"].map((item, index) => (
+            {categories.map((item) => (
               <Button
-                key={index}
+                key={item.id}
                 onClick={() => handleFilter(item)}
                 className="btn"
+                style={{
+                  background:item.active?'blue':'white',
+                  color:item.active?'white':'black',
+                }}
               >
-                {item}
+                {item.title}
               </Button>
             ))}
           </div>
@@ -67,7 +99,7 @@ export const Projects = () => {
           // transition={{ duration: 0.5, type: "spring" }}
           className="cardContainer"
           animate={animateCard}
-        transition={{ duration: 0.5, delayChildren: 0.5 }}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
         >
           {filterWork.map((project) => (
             <Card

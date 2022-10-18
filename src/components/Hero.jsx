@@ -21,9 +21,9 @@ export const Hero=()=>{
         <a href='#projects' className='projectBtn'>Projects</a>
 
                 </div>
-                <div className="heroImg">
+                {/* <div className="heroImg">
                     <img src={HeroBg} alt="hero background" />
-                </div>
+                </div> */}
             </div>
         </motion.div>
     )
