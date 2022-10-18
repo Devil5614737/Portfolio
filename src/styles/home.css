@@ -127,6 +127,8 @@ nav .wrapper .links ul li a {
   display: flex;
   align-items: center;
   margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 .projects .wrapper .titleContainer .buttonContainer .btn {
   background: #ffffff;
